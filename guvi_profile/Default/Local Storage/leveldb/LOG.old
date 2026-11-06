@@ -1,6 +1,0 @@
-2026/11/06-16:22:47.716 c78 Reusing MANIFEST C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\guvi_profile\Default\Local Storage\leveldb/MANIFEST-000001
-2026/11/06-16:22:47.719 c78 Recovering log #13
-2026/11/06-16:22:47.730 c78 Reusing old log C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\guvi_profile\Default\Local Storage\leveldb/000013.log 
-2026/11/06-16:25:59.716 c78 Level-0 table #17: started
-2026/11/06-16:25:59.731 c78 Level-0 table #17: 71995 bytes OK
-2026/11/06-16:25:59.735 c78 Delete type=0 #13

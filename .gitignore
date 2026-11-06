@@ -8,3 +8,16 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Playwright browser state & session cache
+guvi_profile/
+
+# Local run logs & progress trackers
+results.jsonl
+
+# Debug screenshots & HTML dumps
+debug/
+
+# API keys & environment files (CRITICAL)
+gemini_apis.env
+.env
