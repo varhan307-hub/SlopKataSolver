@@ -33,6 +33,8 @@ class Config:
         load_dotenv()
         self.api_key: str = os.environ.get("GEMINI_API_KEY", "")
         self.model: str = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
+        self.groq_api_key = os.environ.get("GROQ_API_KEY", "")
+        self.groq_model = os.environ.get("GROQ_MODEL", "openai/gpt-oss-120b")
         self.default_url: str = "https://www.guvi.in/" + "code-kata/"
         self.max_tries: int = 4
         self.profile_dir: Path = Path("guvi_profile")
@@ -75,48 +77,45 @@ class GeminiService:
         return prompt
 
     def generate_solution(self, prompt: str) -> str:
-        # FIXED: Removed the Markdown brackets [ ] and ( ) that broke requests
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.config.model}:generateContent"
-        
-        body = {"contents": [{"parts": [{"text": prompt}]}]}
-
+        url = "https://api.groq.com/openai/v1/chat/completions"
+        body = {
+            "model": self.config.groq_model,
+            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.2
+        }
         for attempt in range(1, 4):
-            logger.info(f"Querying Gemini ({self.config.model}) - attempt {attempt}/3")
+            logger.info(f"Querying Groq ({self.config.groq_model}) - attempt {attempt}/3")
             try:
                 r = requests.post(
                     url,
-                    headers={"x-goog-api-key": self.config.api_key},
+                    headers={"Authorization": f"Bearer {self.config.groq_api_key}"},
                     json=body,
                     timeout=60,
                 )
             except requests.RequestException as e:
-                logger.warning(f"Network error on Gemini API: {e}")
+                logger.warning(f"Network error: {e}")
                 time.sleep(5 * attempt)
                 continue
-
+    
             if r.status_code == 200:
                 try:
-                    text = r.json()["candidates"][0]["content"]["parts"][0]["text"]
+                    text = r.json()["choices"][0]["message"]["content"]
                 except (KeyError, IndexError):
-                    logger.error(f"Invalid API response: {r.text[:300]}")
+                    logger.error(f"Invalid response: {r.text[:300]}")
                     return ""
-                
                 m = re.search(r"```(?:python)?\s*\n(.*?)```", text, re.S)
                 code = (m.group(1) if m else text).strip()
-                logger.success(f"Generated {len(code)} chars of Python code.")
+                logger.success(f"Generated {len(code)} chars.")
                 return code
-
-            logger.warning(f"Gemini HTTP {r.status_code}: {r.text[:300]}")
+    
+            logger.warning(f"Groq HTTP {r.status_code}: {r.text[:300]}")
             if r.status_code in (429, 500, 503):
-                wait_time = 10 * attempt
-                logger.info(f"Rate limited. Retrying in {wait_time}s...")
-                time.sleep(wait_time)
+                wait = 10 * attempt
+                logger.info(f"Retrying in {wait}s...")
+                time.sleep(wait)
                 continue
             break
-
-        console.print("[red]Critical: Gemini API failed after multiple attempts.[/red]")
         return ""
-
 
 # =====================================================================
 # 3. Problem Selector (Targeting GUVI CodeKata Table Layout)

@@ -21,3 +21,5 @@ debug/
 # API keys & environment files (CRITICAL)
 gemini_apis.env
 .env
+
+logs/
