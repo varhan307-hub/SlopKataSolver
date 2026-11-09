@@ -341,7 +341,6 @@ class ExecutionOrchestrator:
                 + "\n"
             )
 
-
     def fetch_filtered_dashboard(
         self, page, status_filter: str, difficulty_filter: str, count: int
     ) -> list[str]:
@@ -365,13 +364,6 @@ class ExecutionOrchestrator:
             return []
 
         page.wait_for_timeout(2000)
-
-        # Change items per page to 50 to scrape more at once
-        try:
-            page.locator("select#itemsPerPage").select_option("50")
-            page.wait_for_timeout(2000)
-        except Exception:
-            pass
 
         urls = []
         rows = page.locator("table tbody tr")
@@ -480,7 +472,7 @@ class ExecutionOrchestrator:
             profile_dir = Path(args.profile)
             browser = p.chromium.launch_persistent_context(
                 user_data_dir=str(profile_dir),
-                headless=not args.visible,
+                headless=not args.visible and not args.login,
                 viewport={"width": 1280, "height": 800},
             )
             page = browser.pages[0] if browser.pages else browser.new_page()
@@ -490,11 +482,11 @@ class ExecutionOrchestrator:
                 console.print(
                     "[bold yellow]Please log in manually in the browser window.[/bold yellow]"
                 )
-                console.print("[bold yellow]Waiting up to 2 minutes...[/bold yellow]")
+                console.print("[bold yellow]Waiting up to 3 minutes...[/bold yellow]")
                 try:
-                    page.wait_for_url(
-                        lambda url: "code-kata" in url or "dashboard" in url,
-                        timeout=120000,
+                    page.wait_for_function(
+                        "() => localStorage.getItem('authToken') || sessionStorage.getItem('authToken')",
+                        timeout=180000,
                     )
                     console.print(
                         "[bold green]✔ Login successful. Session saved.[/bold green]"
