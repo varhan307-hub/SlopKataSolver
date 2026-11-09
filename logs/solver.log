@@ -1,0 +1,639 @@
+2026-11-06 19:08:20.610 | INFO     | __main__:fetch_filtered_dashboard:153 - Navigating to CodeKata dashboard: https://www.guvi.in/code-kata/
+2026-11-06 19:08:32.871 | INFO     | __main__:fetch_filtered_dashboard:166 - Scanned 3 candidate elements on dashboard.
+2026-11-06 19:08:32.896 | INFO     | __main__:fetch_filtered_dashboard:217 - Filtered down to 0 matching problem(s) (Status: yet_to_start, Difficulty: easy)
+2026-11-06 19:09:52.560 | INFO     | __main__:fetch_filtered_dashboard:153 - Navigating to CodeKata dashboard: https://www.guvi.in/code-kata/
+2026-11-06 19:10:05.663 | INFO     | __main__:fetch_filtered_dashboard:164 - Scanned 3 total anchor links on dashboard.
+2026-11-06 19:10:05.689 | INFO     | __main__:fetch_filtered_dashboard:223 - Successfully isolated 0 valid problem(s) matching criteria.
+2026-11-06 19:12:10.617 | INFO     | __main__:fetch_filtered_dashboard:153 - Navigating to CodeKata dashboard: https://www.guvi.in/code-kata/
+2026-11-06 19:12:15.813 | INFO     | __main__:fetch_filtered_dashboard:157 - Waiting for problem list elements to load from API...
+2026-11-06 19:12:21.097 | INFO     | __main__:fetch_filtered_dashboard:170 - Scanned 3 total anchor links after dynamic load.
+2026-11-06 19:12:21.288 | INFO     | __main__:fetch_filtered_dashboard:229 - Successfully isolated 0 valid problem(s) matching criteria.
+2026-11-06 19:17:16.020 | INFO     | __main__:fetch_filtered_dashboard:153 - Navigating to CodeKata view: https://www.guvi.in/code-kata/?status=unsolved
+2026-11-06 19:17:25.809 | INFO     | __main__:fetch_filtered_dashboard:166 - Scanned 3 anchor links on target page.
+2026-11-06 19:17:25.886 | INFO     | __main__:fetch_filtered_dashboard:190 - Successfully collected 0 problem URL(s).
+2026-11-06 19:23:34.282 | INFO     | __main__:fetch_filtered_dashboard:154 - Navigating to CodeKata view: [https://www.guvi.in/code-kata/?status=](https://www.guvi.in/code-kata/?status=)unsolved
+2026-11-06 19:23:34.327 | ERROR    | __main__:run:435 - Unhandled error: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "[https://www.guvi.in/code-kata/?status=](https://www.guvi.in/code-kata/?status=)unsolved", waiting until "domcontentloaded"
+
+Traceback (most recent call last):
+
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\src\gem\solver.py", line 472, in <module>
+    main()
+    └ <function main at 0x000002796650B110>
+
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\src\gem\solver.py", line 468, in main
+    orchestrator.run(args)
+    │            │   └ Namespace(start=None, file=None, status='unsolved', difficulty='all', count=3, no_submit=True)
+    │            └ <function ExecutionOrchestrator.run at 0x000002796656C670>
+    └ <__main__.ExecutionOrchestrator object at 0x0000027965F357F0>
+
+> File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\src\gem\solver.py", line 384, in run
+    target_urls = self.selector.fetch_filtered_dashboard(
+                  │    │        └ <function ProblemSelector.fetch_filtered_dashboard at 0x0000027966567740>
+                  │    └ <__main__.ProblemSelector object at 0x0000027965F35A90>
+                  └ <__main__.ExecutionOrchestrator object at 0x0000027965F357F0>
+
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\src\gem\solver.py", line 155, in fetch_filtered_dashboard
+    page.goto(dashboard_url, wait_until="domcontentloaded")
+    │    │    └ '[https://www.guvi.in/code-kata/?status=](https://www.guvi.in/code-kata/?status=)unsolved'
+    │    └ <function Page.goto at 0x000002796638A400>
+    └ <Page url='about:blank'>
+
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\sync_api\_generated.py", line 18528, in goto
+    self._sync(
+    │    └ <function SyncBase._sync at 0x0000027966335010>
+    └ <Page url='about:blank'>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_sync_base.py", line 111, in _sync
+    return task.result()
+           │    └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-5' coro=<Page.goto() done, defined at C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-p...
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_page.py", line 564, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+                 │    │           │      └ <function locals_to_params at 0x000002796604B480>
+                 │    │           └ <function Frame.goto at 0x00000279662AD2D0>
+                 │    └ <Frame name= url='about:blank'>
+                 └ <Page url='about:blank'>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_frame.py", line 157, in goto
+    await self._channel.send(
+          │    │        └ <function Channel.send at 0x000002796606F270>
+          │    └ <playwright._impl._connection.Channel object at 0x0000027965F806D0>
+          └ <Frame name= url='about:blank'>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+                 │    │           └ <function Connection.wrap_api_call at 0x0000027966079DD0>
+                 │    └ <playwright._impl._connection.Connection object at 0x0000027966570590>
+                 └ <playwright._impl._connection.Channel object at 0x0000027965F806D0>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+          │                       └ {'frames': [{'file': 'C:\\Users\\sri\\Desktop\\Qow\\Taa\\guvi_claude_pys\\src\\gem\\solver.py', 'line': 155, 'column': 0, 'fu...
+          └ <function rewrite_error at 0x0000027965FA3E20>
+
+playwright._impl._errors.Error: Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "[https://www.guvi.in/code-kata/?status=](https://www.guvi.in/code-kata/?status=)unsolved", waiting until "domcontentloaded"
+
+2026-11-06 19:23:34.561 | DEBUG    | __main__:save_debug:215 - Saved debug artifacts: fatal_error.png / fatal_error.html
+2026-11-06 19:28:04.168 | INFO     | __main__:fetch_filtered_dashboard:158 - Navigating to CodeKata view: https://www.guvi.in/code-kata/?status=unsolved
+2026-11-06 19:28:08.500 | INFO     | __main__:fetch_filtered_dashboard:161 - Waiting for problem table rows to render...
+2026-11-06 19:28:10.839 | INFO     | __main__:fetch_filtered_dashboard:171 - Scanned 3 total links on table page.
+2026-11-06 19:28:10.876 | INFO     | __main__:fetch_filtered_dashboard:204 - Successfully isolated 0 valid problem(s) matching criteria.
+2026-11-06 19:30:11.955 | INFO     | __main__:fetch_filtered_dashboard:157 - Navigating to CodeKata view: https://www.guvi.in/code-kata/?status=unsolved
+2026-11-06 19:30:19.846 | INFO     | __main__:fetch_filtered_dashboard:164 - Clicking 'Surprise Me' for problem 1/3...
+2026-11-06 19:30:21.555 | SUCCESS  | __main__:fetch_filtered_dashboard:175 - Discovered problem URL: https://www.guvi.in/code-kata/maximizing-wealthy-individuals/?status=unsolved
+2026-11-06 19:30:24.374 | INFO     | __main__:fetch_filtered_dashboard:164 - Clicking 'Surprise Me' for problem 2/3...
+2026-11-06 19:30:25.633 | SUCCESS  | __main__:fetch_filtered_dashboard:175 - Discovered problem URL: https://www.guvi.in/code-kata/sum-of-odd-numbers-from-1-to-n/?status=unsolved
+2026-11-06 19:30:28.364 | INFO     | __main__:fetch_filtered_dashboard:164 - Clicking 'Surprise Me' for problem 3/3...
+2026-11-06 19:30:29.921 | SUCCESS  | __main__:fetch_filtered_dashboard:175 - Discovered problem URL: https://www.guvi.in/code-kata/sort-words-alphabetically/?status=unsolved
+2026-11-06 19:30:33.485 | INFO     | __main__:solve_single_problem:306 - --- Attempt 1/4 ---
+2026-11-06 19:30:33.486 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-3.8-flash) - attempt 1/3
+2026-11-06 19:30:38.181 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota ex
+2026-11-06 19:30:38.182 | INFO     | __main__:generate_solution:113 - Rate limited. Retrying in 10s...
+2026-11-06 19:30:48.184 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-3.8-flash) - attempt 2/3
+2026-11-06 19:30:49.904 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota ex
+2026-11-06 19:30:49.924 | INFO     | __main__:generate_solution:113 - Rate limited. Retrying in 20s...
+2026-11-06 19:31:09.929 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-3.8-flash) - attempt 3/3
+2026-11-06 19:31:11.780 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota ex
+2026-11-06 19:31:11.781 | INFO     | __main__:generate_solution:113 - Rate limited. Retrying in 30s...
+2026-11-06 19:31:43.824 | INFO     | __main__:solve_single_problem:306 - --- Attempt 2/4 ---
+2026-11-06 19:31:43.824 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-3.8-flash) - attempt 1/3
+2026-11-06 19:31:44.830 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota ex
+2026-11-06 19:31:44.830 | INFO     | __main__:generate_solution:113 - Rate limited. Retrying in 10s...
+2026-11-06 19:31:54.832 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-3.8-flash) - attempt 2/3
+2026-11-06 19:31:55.911 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota ex
+2026-11-06 19:31:56.048 | INFO     | __main__:generate_solution:113 - Rate limited. Retrying in 20s...
+2026-11-06 19:35:44.558 | INFO     | __main__:fetch_filtered_dashboard:157 - Navigating to CodeKata view: https://www.guvi.in/code-kata/?status=unsolved
+2026-11-06 19:35:52.415 | INFO     | __main__:fetch_filtered_dashboard:164 - Clicking 'Surprise Me' for problem 1/3...
+2026-11-06 19:35:54.839 | SUCCESS  | __main__:fetch_filtered_dashboard:175 - Discovered problem URL: https://www.guvi.in/code-kata/product-inventory-manager-using-stl/?status=unsolved
+2026-11-06 19:35:58.192 | INFO     | __main__:fetch_filtered_dashboard:164 - Clicking 'Surprise Me' for problem 2/3...
+2026-11-06 19:36:00.141 | SUCCESS  | __main__:fetch_filtered_dashboard:175 - Discovered problem URL: https://www.guvi.in/code-kata/e-commerce-platform-2/?status=unsolved
+2026-11-06 19:36:03.704 | INFO     | __main__:fetch_filtered_dashboard:164 - Clicking 'Surprise Me' for problem 3/3...
+2026-11-06 19:36:03.740 | WARNING  | __main__:fetch_filtered_dashboard:181 - Failed to fetch problem via 'Surprise Me' on iteration 3: Page.click: Target page, context or browser has been closed
+2026-11-06 19:36:03.742 | ERROR    | __main__:run:418 - Unhandled error: Page.goto: Target page, context or browser has been closed
+Traceback (most recent call last):
+
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\src\gem\solver.py", line 455, in <module>
+    main()
+    └ <function main at 0x000001C2304BB060>
+
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\src\gem\solver.py", line 451, in main
+    orchestrator.run(args)
+    │            │   └ Namespace(start=None, file=None, status='unsolved', difficulty='all', count=3, no_submit=False)
+    │            └ <function ExecutionOrchestrator.run at 0x000001C23051C5C0>
+    └ <__main__.ExecutionOrchestrator object at 0x000001C22FEE57F0>
+
+> File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\src\gem\solver.py", line 380, in run
+    page.goto(url, wait_until="domcontentloaded")
+    │    │    └ 'https://www.guvi.in/code-kata/product-inventory-manager-using-stl/?status=unsolved'
+    │    └ <function Page.goto at 0x000001C23033A350>
+    └ <Page url='https://www.guvi.in/code-kata/?status=unsolved'>
+
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\sync_api\_generated.py", line 18528, in goto
+    self._sync(
+    │    └ <function SyncBase._sync at 0x000001C2302E0F60>
+    └ <Page url='https://www.guvi.in/code-kata/?status=unsolved'>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_sync_base.py", line 111, in _sync
+    return task.result()
+           │    └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-17' coro=<Page.goto() done, defined at C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-...
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_page.py", line 564, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+                 │    │           │      └ <function locals_to_params at 0x000001C22FFFB3D0>
+                 │    │           └ <function Frame.goto at 0x000001C23025D220>
+                 │    └ <Frame name= url='https://www.guvi.in/code-kata/?status=unsolved'>
+                 └ <Page url='https://www.guvi.in/code-kata/?status=unsolved'>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_frame.py", line 157, in goto
+    await self._channel.send(
+          │    │        └ <function Channel.send at 0x000001C23001F1C0>
+          │    └ <playwright._impl._connection.Channel object at 0x000001C22FF307A0>
+          └ <Frame name= url='https://www.guvi.in/code-kata/?status=unsolved'>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+                 │    │           └ <function Connection.wrap_api_call at 0x000001C230029D20>
+                 │    └ <playwright._impl._connection.Connection object at 0x000001C230520590>
+                 └ <playwright._impl._connection.Channel object at 0x000001C22FF307A0>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+          │                       └ {'frames': [{'file': 'C:\\Users\\sri\\Desktop\\Qow\\Taa\\guvi_claude_pys\\src\\gem\\solver.py', 'line': 380, 'column': 0, 'fu...
+          └ <function rewrite_error at 0x000001C22FF4BD70>
+
+playwright._impl._errors.TargetClosedError: Page.goto: Target page, context or browser has been closed
+2026-11-06 19:36:03.786 | ERROR    | __main__:save_debug:199 - Failed to save debug artifacts: Page.screenshot: Target page, context or browser has been closed
+2026-11-06 19:36:40.467 | INFO     | __main__:fetch_filtered_dashboard:157 - Navigating to CodeKata view: https://www.guvi.in/code-kata/?status=unsolved
+2026-11-06 19:36:48.092 | INFO     | __main__:fetch_filtered_dashboard:164 - Clicking 'Surprise Me' for problem 1/3...
+2026-11-06 19:36:49.705 | SUCCESS  | __main__:fetch_filtered_dashboard:175 - Discovered problem URL: https://www.guvi.in/code-kata/sort-array-in-even-odd-pattern/?status=unsolved
+2026-11-06 19:36:52.805 | INFO     | __main__:fetch_filtered_dashboard:164 - Clicking 'Surprise Me' for problem 2/3...
+2026-11-06 19:36:54.166 | SUCCESS  | __main__:fetch_filtered_dashboard:175 - Discovered problem URL: https://www.guvi.in/code-kata/longest-common-prefix-query/?status=unsolved
+2026-11-06 19:36:57.100 | INFO     | __main__:fetch_filtered_dashboard:164 - Clicking 'Surprise Me' for problem 3/3...
+2026-11-06 19:36:58.501 | SUCCESS  | __main__:fetch_filtered_dashboard:175 - Discovered problem URL: https://www.guvi.in/code-kata/nth-term-in-mixed-geometric-series/?status=unsolved
+2026-11-06 19:37:02.706 | INFO     | __main__:solve_single_problem:306 - --- Attempt 1/4 ---
+2026-11-06 19:37:02.765 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-3.8-flash) - attempt 1/3
+2026-11-06 19:37:06.784 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota ex
+2026-11-06 19:37:06.786 | INFO     | __main__:generate_solution:113 - Rate limited. Retrying in 10s...
+2026-11-06 19:37:16.787 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-3.8-flash) - attempt 2/3
+2026-11-06 19:37:17.736 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota ex
+2026-11-06 19:37:17.736 | INFO     | __main__:generate_solution:113 - Rate limited. Retrying in 20s...
+2026-11-06 19:37:37.738 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-3.8-flash) - attempt 3/3
+2026-11-06 19:37:38.505 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota ex
+2026-11-06 19:37:38.507 | INFO     | __main__:generate_solution:113 - Rate limited. Retrying in 30s...
+2026-11-06 19:47:29.446 | INFO     | __main__:fetch_filtered_dashboard:157 - Navigating to CodeKata view: https://www.guvi.in/code-kata/?status=unsolved
+2026-11-06 19:47:34.371 | INFO     | __main__:fetch_filtered_dashboard:160 - Waiting for problem table rows to render...
+2026-11-06 19:47:34.829 | INFO     | __main__:fetch_filtered_dashboard:169 - Scanned 15 total rows on table page.
+2026-11-06 19:50:33.230 | INFO     | __main__:fetch_filtered_dashboard:157 - Navigating to CodeKata view: https://www.guvi.in/code-kata/?status=unsolved
+2026-11-06 19:50:38.226 | INFO     | __main__:fetch_filtered_dashboard:160 - Waiting for problem table rows to render...
+2026-11-06 19:50:38.699 | INFO     | __main__:fetch_filtered_dashboard:169 - Scanned 15 total rows on table page.
+2026-11-06 19:52:35.584 | INFO     | __main__:fetch_filtered_dashboard:158 - Navigating to CodeKata view: https://www.guvi.in/code-kata/?status=unsolved&difficulty=easy
+2026-11-06 19:52:40.456 | INFO     | __main__:fetch_filtered_dashboard:161 - Waiting for problem table rows to render...
+2026-11-06 19:52:40.759 | INFO     | __main__:fetch_filtered_dashboard:170 - Scanned 15 total rows on table page.
+2026-11-06 20:11:57.082 | INFO     | __main__:fetch_filtered_dashboard:161 - Navigating to CodeKata view: https://www.guvi.in/code-kata/?status=unsolved&difficulty=easy
+2026-11-06 20:12:01.574 | INFO     | __main__:fetch_filtered_dashboard:164 - Waiting for problem table rows to render...
+2026-11-06 20:12:01.835 | SUCCESS  | __main__:fetch_filtered_dashboard:185 - Discovered 0 problem URLs from the filtered table.
+2026-11-06 20:12:43.412 | INFO     | __main__:fetch_filtered_dashboard:161 - Navigating to CodeKata view: https://www.guvi.in/code-kata/?status=unsolved&difficulty=easy
+2026-11-06 20:12:48.001 | INFO     | __main__:fetch_filtered_dashboard:164 - Waiting for problem table to render...
+2026-11-06 20:12:48.253 | SUCCESS  | __main__:fetch_filtered_dashboard:187 - Discovered 0 problem URLs from the filtered table.
+2026-11-06 20:28:33.042 | ERROR    | __main__:run:405 - Unhandled error: Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator(".codekataQuestion") to be visible
+
+Traceback (most recent call last):
+
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\src\gem\solver.py", line 442, in <module>
+    main()
+    └ <function main at 0x0000021B4E0AB060>
+
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\src\gem\solver.py", line 438, in main
+    orchestrator.run(args)
+    │            │   └ Namespace(start=None, file=None, status='unsolved', difficulty='easy', count=3, no_submit=False)
+    │            └ <function ExecutionOrchestrator.run at 0x0000021B4E10C5C0>
+    └ <__main__.ExecutionOrchestrator object at 0x0000021B4DAD57F0>
+
+> File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\src\gem\solver.py", line 368, in run
+    page.wait_for_selector(".codekataQuestion", timeout=45000)
+    │    └ <function Page.wait_for_selector at 0x0000021B4DF40D50>
+    └ <Page url='https://www.guvi.in/code-kata/'>
+
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\sync_api\_generated.py", line 21370, in wait_for_selector
+    self._sync(
+    │    └ <function SyncBase._sync at 0x0000021B4DED0F60>
+    └ <Page url='https://www.guvi.in/code-kata/'>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_sync_base.py", line 111, in _sync
+    return task.result()
+           │    └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-8' coro=<Page.wait_for_selector() done, defined at C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.ve...
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_page.py", line 431, in wait_for_selector
+    return await self._main_frame.wait_for_selector(**locals_to_params(locals()))
+                 │    │           │                   └ <function locals_to_params at 0x0000021B4DBEB3D0>
+                 │    │           └ <function Frame.wait_for_selector at 0x0000021B4DE4A560>
+                 │    └ <Frame name= url='https://www.guvi.in/code-kata/'>
+                 └ <Page url='https://www.guvi.in/code-kata/'>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_frame.py", line 395, in wait_for_selector
+    await self._channel.send(
+          │    │        └ <function Channel.send at 0x0000021B4DC0F1C0>
+          │    └ <playwright._impl._connection.Channel object at 0x0000021B4E01F450>
+          └ <Frame name= url='https://www.guvi.in/code-kata/'>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+                 │    │           └ <function Connection.wrap_api_call at 0x0000021B4DC19D20>
+                 │    └ <playwright._impl._connection.Connection object at 0x0000021B4E110590>
+                 └ <playwright._impl._connection.Channel object at 0x0000021B4E01F450>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+          │                       └ {'frames': [{'file': 'C:\\Users\\sri\\Desktop\\Qow\\Taa\\guvi_claude_pys\\src\\gem\\solver.py', 'line': 368, 'column': 0, 'fu...
+          └ <function rewrite_error at 0x0000021B4DB37D70>
+
+playwright._impl._errors.TargetClosedError: Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator(".codekataQuestion") to be visible
+
+2026-11-06 20:28:33.073 | ERROR    | __main__:save_debug:186 - Failed to save debug artifacts: Page.screenshot: Target page, context or browser has been closed
+2026-11-09 15:46:00.885 | ERROR    | __main__:run:405 - Unhandled error: Page.wait_for_selector: Timeout 45000ms exceeded.
+Call log:
+  - waiting for locator(".codekataQuestion") to be visible
+
+Traceback (most recent call last):
+
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\src\gem\solver.py", line 442, in <module>
+    main()
+    └ <function main at 0x000002B5B10EB060>
+
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\src\gem\solver.py", line 438, in main
+    orchestrator.run(args)
+    │            │   └ Namespace(start=None, file=None, status='unsolved', difficulty='easy', count=3, no_submit=False)
+    │            └ <function ExecutionOrchestrator.run at 0x000002B5B114C5C0>
+    └ <__main__.ExecutionOrchestrator object at 0x000002B5B0AC57F0>
+
+> File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\src\gem\solver.py", line 368, in run
+    page.wait_for_selector(".codekataQuestion", timeout=45000)
+    │    └ <function Page.wait_for_selector at 0x000002B5B0F80D50>
+    └ <Page url='https://www.guvi.in/code-kata/'>
+
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\sync_api\_generated.py", line 21370, in wait_for_selector
+    self._sync(
+    │    └ <function SyncBase._sync at 0x000002B5B0F10F60>
+    └ <Page url='https://www.guvi.in/code-kata/'>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_sync_base.py", line 111, in _sync
+    return task.result()
+           │    └ <method 'result' of '_asyncio.Task' objects>
+           └ <Task finished name='Task-8' coro=<Page.wait_for_selector() done, defined at C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.ve...
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_page.py", line 431, in wait_for_selector
+    return await self._main_frame.wait_for_selector(**locals_to_params(locals()))
+                 │    │           │                   └ <function locals_to_params at 0x000002B5B0C1B3D0>
+                 │    │           └ <function Frame.wait_for_selector at 0x000002B5B0E8A560>
+                 │    └ <Frame name= url='https://www.guvi.in/code-kata/'>
+                 └ <Page url='https://www.guvi.in/code-kata/'>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_frame.py", line 395, in wait_for_selector
+    await self._channel.send(
+          │    │        └ <function Channel.send at 0x000002B5B0C3F1C0>
+          │    └ <playwright._impl._connection.Channel object at 0x000002B5B0B50600>
+          └ <Frame name= url='https://www.guvi.in/code-kata/'>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 78, in send
+    return await self._connection.wrap_api_call(
+                 │    │           └ <function Connection.wrap_api_call at 0x000002B5B0C49D20>
+                 │    └ <playwright._impl._connection.Connection object at 0x000002B5B1150590>
+                 └ <playwright._impl._connection.Channel object at 0x000002B5B0B50600>
+  File "C:\Users\sri\Desktop\Qow\Taa\guvi_claude_pys\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 636, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+          │                       └ {'frames': [{'file': 'C:\\Users\\sri\\Desktop\\Qow\\Taa\\guvi_claude_pys\\src\\gem\\solver.py', 'line': 368, 'column': 0, 'fu...
+          └ <function rewrite_error at 0x000002B5B0B67D70>
+
+playwright._impl._errors.TimeoutError: Page.wait_for_selector: Timeout 45000ms exceeded.
+Call log:
+  - waiting for locator(".codekataQuestion") to be visible
+
+2026-11-09 15:46:01.313 | DEBUG    | __main__:save_debug:184 - Saved debug artifacts: fatal_error.png / fatal_error.html
+2026-11-09 15:54:33.395 | INFO     | __main__:solve_single_problem:295 - --- Attempt 1/4 ---
+2026-11-09 15:54:33.397 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-1.5-flash) - attempt 1/3
+2026-11-09 15:54:36.574 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2026-11-09 15:54:38.580 | INFO     | __main__:solve_single_problem:295 - --- Attempt 2/4 ---
+2026-11-09 15:54:38.581 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-1.5-flash) - attempt 1/3
+2026-11-09 15:54:39.977 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2026-11-09 15:54:41.982 | INFO     | __main__:solve_single_problem:295 - --- Attempt 3/4 ---
+2026-11-09 15:54:41.983 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-1.5-flash) - attempt 1/3
+2026-11-09 15:54:43.252 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2026-11-09 15:54:45.257 | INFO     | __main__:solve_single_problem:295 - --- Attempt 4/4 ---
+2026-11-09 15:54:45.258 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-1.5-flash) - attempt 1/3
+2026-11-09 15:54:46.883 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2026-11-09 15:56:29.038 | INFO     | __main__:solve_single_problem:295 - --- Attempt 1/4 ---
+2026-11-09 15:56:29.039 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-1.5-flash) - attempt 1/3
+2026-11-09 15:56:30.392 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2026-11-09 15:56:32.423 | INFO     | __main__:solve_single_problem:295 - --- Attempt 2/4 ---
+2026-11-09 15:56:32.426 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-1.5-flash) - attempt 1/3
+2026-11-09 15:56:34.040 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2026-11-09 15:56:36.057 | INFO     | __main__:solve_single_problem:295 - --- Attempt 3/4 ---
+2026-11-09 15:56:36.062 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-1.5-flash) - attempt 1/3
+2026-11-09 15:56:37.056 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2026-11-09 15:56:39.069 | INFO     | __main__:solve_single_problem:295 - --- Attempt 4/4 ---
+2026-11-09 15:56:39.071 | INFO     | __main__:generate_solution:85 - Querying Gemini (gemini-1.5-flash) - attempt 1/3
+2026-11-09 15:56:39.961 | WARNING  | __main__:generate_solution:110 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+
+2026-11-09 16:02:22.224 | INFO     | __main__:run:329 - Fetching filtered problems from GUVI dashboard...
+2026-11-09 16:07:53.002 | INFO     | __main__:run:327 - Fetching filtered problems from GUVI dashboard...
+2026-11-09 16:08:52.827 | INFO     | __main__:run:331 - Fetching filtered problems from GUVI dashboard...
+2026-11-09 16:08:56.353 | INFO     | __main__:run:334 - Found 0 problems to process.
+2026-11-09 16:08:56.354 | INFO     | __main__:run:360 - Batch execution completed.
+2026-11-09 16:09:02.093 | INFO     | __main__:run:331 - Fetching filtered problems from GUVI dashboard...
+2026-11-09 16:09:07.534 | INFO     | __main__:run:334 - Found 0 problems to process.
+2026-11-09 16:09:07.536 | INFO     | __main__:run:360 - Batch execution completed.
+2026-11-09 17:07:43.458 | INFO     | __main__:run:344 - Fetching filtered problems from GUVI dashboard...
+2026-11-09 17:08:10.274 | INFO     | __main__:run:347 - Found 0 problems to process.
+2026-11-09 17:08:10.275 | INFO     | __main__:run:373 - Batch execution completed.
+2026-11-09 17:12:11.148 | INFO     | __main__:run:332 - Fetching filtered problems from GUVI dashboard...
+2026-11-09 17:12:19.429 | INFO     | __main__:run:335 - Found 0 problems to process.
+2026-11-09 17:12:19.461 | INFO     | __main__:run:361 - Batch execution completed.
+2026-11-09 17:13:09.665 | INFO     | __main__:run:347 - Fetching filtered problems from GUVI dashboard...
+2026-11-09 17:13:29.096 | INFO     | __main__:run:350 - Found 0 problems to process.
+2026-11-09 17:13:29.098 | INFO     | __main__:run:376 - Batch execution completed.
+2026-11-09 17:14:45.890 | INFO     | __main__:run:340 - Fetching filtered problems from GUVI dashboard...
+2026-11-09 17:20:12.356 | INFO     | __main__:run:328 - Fetching filtered problems from GUVI dashboard...
+2026-11-09 17:20:28.107 | INFO     | __main__:run:331 - Found 0 problems to process.
+2026-11-09 17:20:28.108 | INFO     | __main__:run:357 - Batch execution completed.
+2026-11-09 17:21:59.105 | INFO     | __main__:run:337 - Fetching filtered problems from GUVI dashboard...
+2026-11-09 17:22:09.883 | INFO     | __main__:run:340 - Found 3 problems to process.
+2026-11-09 17:22:12.477 | INFO     | __main__:solve_single_problem:288 - --- Attempt 1/4 ---
+2026-11-09 17:22:12.477 | INFO     | __main__:generate_solution:83 - Querying Gemini (gemini-1.5-flash) - attempt 1/3
+2026-11-09 17:22:12.492 | WARNING  | __main__:generate_solution:92 - Network error on Gemini API: No connection adapters were found for '[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/)gemini-1.5-flash:generateContent'
+2026-11-09 17:22:17.520 | INFO     | __main__:generate_solution:83 - Querying Gemini (gemini-1.5-flash) - attempt 2/3
+2026-11-09 17:22:17.525 | WARNING  | __main__:generate_solution:92 - Network error on Gemini API: No connection adapters were found for '[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/)gemini-1.5-flash:generateContent'
+2026-11-09 17:22:27.527 | INFO     | __main__:generate_solution:83 - Querying Gemini (gemini-1.5-flash) - attempt 3/3
+2026-11-09 17:22:27.528 | WARNING  | __main__:generate_solution:92 - Network error on Gemini API: No connection adapters were found for '[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/)gemini-1.5-flash:generateContent'
+2026-11-09 17:22:44.531 | INFO     | __main__:solve_single_problem:288 - --- Attempt 2/4 ---
+2026-11-09 17:22:44.532 | INFO     | __main__:generate_solution:83 - Querying Gemini (gemini-1.5-flash) - attempt 1/3
+2026-11-09 17:22:44.534 | WARNING  | __main__:generate_solution:92 - Network error on Gemini API: No connection adapters were found for '[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/)gemini-1.5-flash:generateContent'
+2026-11-09 17:22:49.535 | INFO     | __main__:generate_solution:83 - Querying Gemini (gemini-1.5-flash) - attempt 2/3
+2026-11-09 17:22:49.537 | WARNING  | __main__:generate_solution:92 - Network error on Gemini API: No connection adapters were found for '[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/)gemini-1.5-flash:generateContent'
+2026-11-09 17:22:59.537 | INFO     | __main__:generate_solution:83 - Querying Gemini (gemini-1.5-flash) - attempt 3/3
+2026-11-09 17:22:59.540 | WARNING  | __main__:generate_solution:92 - Network error on Gemini API: No connection adapters were found for '[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/)gemini-1.5-flash:generateContent'
+2026-11-09 17:23:16.545 | INFO     | __main__:solve_single_problem:288 - --- Attempt 3/4 ---
+2026-11-09 17:23:16.546 | INFO     | __main__:generate_solution:83 - Querying Gemini (gemini-1.5-flash) - attempt 1/3
+2026-11-09 17:23:16.547 | WARNING  | __main__:generate_solution:92 - Network error on Gemini API: No connection adapters were found for '[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/)gemini-1.5-flash:generateContent'
+2026-11-09 17:23:21.548 | INFO     | __main__:generate_solution:83 - Querying Gemini (gemini-1.5-flash) - attempt 2/3
+2026-11-09 17:23:21.550 | WARNING  | __main__:generate_solution:92 - Network error on Gemini API: No connection adapters were found for '[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/)gemini-1.5-flash:generateContent'
+2026-11-09 17:23:31.552 | INFO     | __main__:generate_solution:83 - Querying Gemini (gemini-1.5-flash) - attempt 3/3
+2026-11-09 17:23:31.554 | WARNING  | __main__:generate_solution:92 - Network error on Gemini API: No connection adapters were found for '[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/)gemini-1.5-flash:generateContent'
+2026-11-09 17:23:48.556 | INFO     | __main__:solve_single_problem:288 - --- Attempt 4/4 ---
+2026-11-09 17:23:48.557 | INFO     | __main__:generate_solution:83 - Querying Gemini (gemini-1.5-flash) - attempt 1/3
+2026-11-09 17:23:48.558 | WARNING  | __main__:generate_solution:92 - Network error on Gemini API: No connection adapters were found for '[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/)gemini-1.5-flash:generateContent'
+2026-11-09 17:23:53.559 | INFO     | __main__:generate_solution:83 - Querying Gemini (gemini-1.5-flash) - attempt 2/3
+2026-11-09 17:23:53.562 | WARNING  | __main__:generate_solution:92 - Network error on Gemini API: No connection adapters were found for '[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/)gemini-1.5-flash:generateContent'
+2026-11-09 17:24:03.563 | INFO     | __main__:generate_solution:83 - Querying Gemini (gemini-1.5-flash) - attempt 3/3
+2026-11-09 17:24:03.567 | WARNING  | __main__:generate_solution:92 - Network error on Gemini API: No connection adapters were found for '[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/)gemini-1.5-flash:generateContent'
+2026-11-09 17:24:23.673 | INFO     | __main__:solve_single_problem:288 - --- Attempt 1/4 ---
+2026-11-09 17:24:23.673 | INFO     | __main__:generate_solution:83 - Querying Gemini (gemini-1.5-flash) - attempt 1/3
+2026-11-09 17:24:23.675 | WARNING  | __main__:generate_solution:92 - Network error on Gemini API: No connection adapters were found for '[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/)gemini-1.5-flash:generateContent'
+2026-11-09 17:24:28.677 | INFO     | __main__:generate_solution:83 - Querying Gemini (gemini-1.5-flash) - attempt 2/3
+2026-11-09 17:24:28.682 | WARNING  | __main__:generate_solution:92 - Network error on Gemini API: No connection adapters were found for '[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/)gemini-1.5-flash:generateContent'
+2026-11-09 17:24:38.683 | INFO     | __main__:generate_solution:83 - Querying Gemini (gemini-1.5-flash) - attempt 3/3
+2026-11-09 17:24:38.684 | WARNING  | __main__:generate_solution:92 - Network error on Gemini API: No connection adapters were found for '[https://generativelanguage.googleapis.com/v1beta/models/](https://generativelanguage.googleapis.com/v1beta/models/)gemini-1.5-flash:generateContent'
+2026-11-09 17:24:55.356 | INFO     | __main__:run:338 - Fetching filtered problems from GUVI dashboard...
+2026-11-09 17:25:05.111 | INFO     | __main__:run:341 - Found 3 problems to process.
+2026-11-09 17:25:08.307 | INFO     | __main__:solve_single_problem:289 - --- Attempt 1/4 ---
+2026-11-09 17:25:08.307 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:25:09.248 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:25:11.254 | INFO     | __main__:solve_single_problem:289 - --- Attempt 2/4 ---
+2026-11-09 17:25:11.255 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:25:12.459 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:25:14.465 | INFO     | __main__:solve_single_problem:289 - --- Attempt 3/4 ---
+2026-11-09 17:25:14.466 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:25:15.360 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:25:17.367 | INFO     | __main__:solve_single_problem:289 - --- Attempt 4/4 ---
+2026-11-09 17:25:17.370 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:25:18.664 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:25:23.589 | INFO     | __main__:solve_single_problem:289 - --- Attempt 1/4 ---
+2026-11-09 17:25:23.590 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:25:24.498 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:25:26.503 | INFO     | __main__:solve_single_problem:289 - --- Attempt 2/4 ---
+2026-11-09 17:25:26.504 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:25:27.545 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:25:29.549 | INFO     | __main__:solve_single_problem:289 - --- Attempt 3/4 ---
+2026-11-09 17:25:29.550 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:25:30.280 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:25:32.289 | INFO     | __main__:solve_single_problem:289 - --- Attempt 4/4 ---
+2026-11-09 17:25:32.292 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:25:33.091 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:25:37.953 | INFO     | __main__:solve_single_problem:289 - --- Attempt 1/4 ---
+2026-11-09 17:25:37.954 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:25:38.985 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:25:40.989 | INFO     | __main__:solve_single_problem:289 - --- Attempt 2/4 ---
+2026-11-09 17:25:40.990 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:25:42.018 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:25:44.022 | INFO     | __main__:solve_single_problem:289 - --- Attempt 3/4 ---
+2026-11-09 17:25:44.024 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:25:44.836 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:25:46.840 | INFO     | __main__:solve_single_problem:289 - --- Attempt 4/4 ---
+2026-11-09 17:25:46.840 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:25:47.671 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:25:49.683 | INFO     | __main__:run:367 - Batch execution completed.
+2026-11-09 17:27:21.722 | INFO     | __main__:run:339 - Fetching filtered problems from GUVI dashboard...
+2026-11-09 17:27:34.404 | INFO     | __main__:run:342 - Found 3 problems to process.
+2026-11-09 17:27:36.867 | INFO     | __main__:solve_single_problem:290 - --- Attempt 1/4 ---
+2026-11-09 17:27:36.867 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:27:37.889 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:27:39.902 | INFO     | __main__:solve_single_problem:290 - --- Attempt 2/4 ---
+2026-11-09 17:27:39.912 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:27:41.557 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:27:43.560 | INFO     | __main__:solve_single_problem:290 - --- Attempt 3/4 ---
+2026-11-09 17:27:43.561 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:27:44.370 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:27:46.375 | INFO     | __main__:solve_single_problem:290 - --- Attempt 4/4 ---
+2026-11-09 17:27:46.376 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:27:47.310 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:27:51.929 | INFO     | __main__:solve_single_problem:290 - --- Attempt 1/4 ---
+2026-11-09 17:27:51.930 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:27:52.687 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:27:54.691 | INFO     | __main__:solve_single_problem:290 - --- Attempt 2/4 ---
+2026-11-09 17:27:54.692 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:27:56.256 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:27:58.266 | INFO     | __main__:solve_single_problem:290 - --- Attempt 3/4 ---
+2026-11-09 17:27:58.267 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:27:58.984 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:28:00.988 | INFO     | __main__:solve_single_problem:290 - --- Attempt 4/4 ---
+2026-11-09 17:28:00.989 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:28:01.811 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:28:06.489 | INFO     | __main__:solve_single_problem:290 - --- Attempt 1/4 ---
+2026-11-09 17:28:06.489 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:28:07.242 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:28:09.246 | INFO     | __main__:solve_single_problem:290 - --- Attempt 2/4 ---
+2026-11-09 17:28:09.247 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:28:10.621 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:28:12.624 | INFO     | __main__:solve_single_problem:290 - --- Attempt 3/4 ---
+2026-11-09 17:28:12.625 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:28:13.358 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:28:15.362 | INFO     | __main__:solve_single_problem:290 - --- Attempt 4/4 ---
+2026-11-09 17:28:15.362 | INFO     | __main__:generate_solution:84 - Querying Gemini (gemini-2.0-flash) - attempt 1/3
+2026-11-09 17:28:16.094 | WARNING  | __main__:generate_solution:109 - Gemini HTTP 404: {
+  "error": {
+    "code": 404,
+    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvements. We recommend you to use the Interactions API (https://aistudio.google.com/docs/get-started).",
+ 
+2026-11-09 17:28:18.105 | INFO     | __main__:run:368 - Batch execution completed.
