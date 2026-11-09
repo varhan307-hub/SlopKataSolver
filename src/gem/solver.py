@@ -148,44 +148,48 @@ class ProblemSelector:
 
     def fetch_filtered_dashboard(self, page, status_filter: str, difficulty_filter: str, count: int) -> List[str]:
         status_param = "start" if status_filter.lower() in ["unsolved", "start"] else status_filter
+        
         dashboard_url = "https://www.guvi.in/code-kata/?status=" + status_param
         if difficulty_filter and difficulty_filter.lower() != "all":
             dashboard_url += "&difficulty=" + difficulty_filter.lower()
-    
+            
         print(f"[*] Navigating to: {dashboard_url}")
         page.goto(dashboard_url, wait_until="domcontentloaded")
-    
+        
         try:
             page.wait_for_selector("table tbody tr", timeout=20000)
         except Exception:
             print("[!] Table never rendered.")
             return []
-    
+
         page.wait_for_timeout(2000)
-    
         rows = page.locator("table tbody tr")
         total = rows.count()
         urls = []
-    
+
         for i in range(total):
             if len(urls) >= count:
                 break
             try:
+                # Click the row to open problem
                 page.locator("table tbody tr").nth(i).click()
                 page.wait_for_selector(".codekataQuestion", timeout=15000)
-                page.wait_for_timeout(500)  # let it settle
+                page.wait_for_timeout(500) # Let code editor load
                 urls.append(page.url)
                 
+                # Hard refresh dashboard instead of going back (kills bfcache flicker)
                 page.goto(dashboard_url, wait_until="domcontentloaded")
                 page.wait_for_selector("table tbody tr", timeout=15000)
-                page.wait_for_timeout(1500)  # let the table repaint fully
+                page.wait_for_timeout(1500) 
             except Exception as e:
                 print(f"[!] Row {i} failed: {e}")
                 continue
 
         print(f"[*] Extracted Problem URLs: {urls}")
+        if not urls:
+            print("[!] Zero links matched.")
         return urls
-
+        
 # =====================================================================
 # 4. GUVI Browser Automator
 # =====================================================================
@@ -325,7 +329,7 @@ class ExecutionOrchestrator:
         with sync_playwright() as p:
             browser = p.chromium.launch_persistent_context(
                 user_data_dir=str(self.config.profile_dir),
-                headless=False,
+                headless=True,
                 viewport={"width": 1280, "height": 800}
             )
             page = browser.pages[0] if browser.pages else browser.new_page()
@@ -398,4 +402,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
